@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 import { Acontext } from '../App';
-import KpiTable from './KpiTable';
-import Product from './Product';
+// import KpiTable from './KpiTable';
+// import Productspage from './ProductsPage';
+import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -13,6 +14,8 @@ const GetData = () => {
   const [filteredVarieties, setFilteredVarieties] = useState([]);
   const [sortType, setSortType] = useState(null);
   const { data } = useContext(Acontext);
+
+const  navigate = useNavigate()
 
   useEffect(() => {
     const searchQuery = search ? search.toString().toLowerCase() : '';
@@ -35,29 +38,33 @@ const GetData = () => {
 
   const handleSort = type => {
     setSortType(prevSortType => (prevSortType === type ? null : type));
+    
   };
 
   const handleAddToCart = variety => {
     setCartItems(prevCartItems => [...prevCartItems, variety]);
   };
 
-  const handleAddProduct = variety => {
+  const  handleaddproduct = ()=> {
     if (isadminloggedin) {
-      setCartItems(prevCartItems => [...prevCartItems, variety]);
+      navigate("/products")
+      
     }
   };
+
+  
 
   const handleDelete = idx => {
     const filteredData = filteredVarieties.filter((item, index) => index !== idx);
     setFilteredVarieties(filteredData);
   };
 
-  const handleUpdate =(idx)=>{
+  // const handleUpdate =(idx)=>{
 
-  }
-  const handleBuynow =(idx)=>{
+  // }
+  // const handleBuynow =(idx)=>{
     
-  }
+  // }
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const displayedVarieties = filteredVarieties.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -66,6 +73,7 @@ const GetData = () => {
     <div className="Sbar">
       <div className="d-flex justify-content-center">
         <div className="button-container">
+          <div>
           <Button
             variant="contained"
             color="warning"
@@ -75,6 +83,7 @@ const GetData = () => {
           >
             Light
           </Button>
+
           <Button
             variant="contained"
             color="primary"
@@ -84,6 +93,7 @@ const GetData = () => {
           >
             Medium
           </Button>
+
           <Button
             variant="contained"
             color="warning"
@@ -92,9 +102,28 @@ const GetData = () => {
           >
             Strong
           </Button>
+          
+          
+          {/* <div className='product-container'> */}
+          {/* {isadminloggedin ? ( */}
+          <Button
+            variant="contained"
+            color="warning"
+            
+            style ={{marginLeft:'459px'}}
+            className={sortType === 'Add_Product' ? 'active-button' : ''}
+            onClick={handleaddproduct}
+          >
+            Add Product
+          </Button>
+        
+          </div> 
+
+
+
         </div>
       </div>
-
+ 
       <div className="card-container">
         {displayedVarieties.map((variety, index) => (
           <Card key={index} className="card">

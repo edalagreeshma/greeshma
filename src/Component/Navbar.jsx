@@ -65,22 +65,14 @@ const Navbar = () => {
                 Order
               </NavLink>
             </li>
-{isadminloggedin && <>
-  <li className="nav-item mx-2">
+            {isadminloggedin && <>
+             <li className="nav-item mx-2">
                 <NavLink className="nav-link" aria-current="page" to="/Users">
                   Users
                 </NavLink>
               </li>
-  
-              <li className="nav-item mx-2">
-                <NavLink className="nav-link" aria-current="page" to="/Products">
-                  Add Product
-                </NavLink>
-              </li></>
-               
-}
-
-
+             </>
+              }  
           </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item mx-2">
@@ -143,6 +135,7 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+  };
+                                 
 
 export default Navbar;

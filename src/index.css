@@ -390,9 +390,9 @@
 
 .container{
   width: 100%;
-  margin-top: 13%;
+  margin-top: 10%;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 10px;
   display: inline-flex;
   flex-direction: column;
 }
@@ -404,7 +404,7 @@
   visibility: hidden;
 }
 
-/* Assuming you add a class 'form-container' to the form container div */
+
 .form-container {
   width: 100%;
   align-items: center;
@@ -413,11 +413,23 @@
   margin: 8px 0;
   display: inline-flex;
   flex-direction: column;
-  /* border: 1px solid #ccc;
-  border-radius: 4px; */
 }
 
 .product-form-textfield {
   margin-bottom: 10px;
 }
+.product-container {
+  
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  color: rgb(80, 167, 254);
+  padding: 12px 20px;
+  text-decoration: auto;
+  float: right;
+
+}
+
+
 
